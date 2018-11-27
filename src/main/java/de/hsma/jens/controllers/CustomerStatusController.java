@@ -34,7 +34,7 @@ public class CustomerStatusController {
     public void updateCustomerStatus(CustomerStatus cs){
 
     };
-    public void updateAirport(List<CustomerStatus> cs){
+    public void updateCustomerStatus(List<CustomerStatus> cs){
 
     };
 
