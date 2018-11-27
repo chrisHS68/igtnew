@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # hibernate-ogm-tutorial
 
 This project shows an implementation of Hibernate ORM and OGM. Thus, relational as well as NoSQL databases can be used interchangeably. 
@@ -122,3 +123,6 @@ Nützliche Cassandra-Befehle:
     expand on;
     
     
+=======
+
+>>>>>>> 549423a9f4cc96061bc818a3fb558fd08f84cbba
