@@ -15,7 +15,7 @@ public class CustomerAdressController {
     //build the EntityManagerFactory as you would build in in Hibernate ORM
     EntityManagerFactory emf = Persistence.createEntityManagerFactory(Config.PERSISTENCE_UNIT_NAME);
 
-    //Inteface Methods
+    //Interface Methods
     public void createAdress(){
 
     };
