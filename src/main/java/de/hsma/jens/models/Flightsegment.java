@@ -17,7 +17,7 @@ public class Flightsegment {
     private String name;
     @Column
     private Integer strecke;
-    @ManyToMany(mappedBy = "segment")
+    @ManyToMany
     private Collection<Flight> flights = new ArrayList<>();
     @OneToMany
     private Collection<Airport> zielflughafen = new ArrayList<>();

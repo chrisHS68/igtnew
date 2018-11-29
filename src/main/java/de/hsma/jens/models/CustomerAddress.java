@@ -6,6 +6,7 @@ import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 
 @Entity
@@ -23,7 +24,7 @@ public class CustomerAddress implements Serializable {
     @Column
     private String hausnummer;
     @OneToMany
-    private FlightCustomer customer;
+    private Collection<FlightCustomer> customer;
 
     public Integer getId() {
         return id;
@@ -65,11 +66,11 @@ public class CustomerAddress implements Serializable {
         this.hausnummer = hausnummer;
     }
 
-    public FlightCustomer getCustomer() {
+    public Collection<FlightCustomer> getCustomer() {
         return customer;
     }
 
-    public void setCustomer(FlightCustomer customer) {
+    public void setCustomer(Collection<FlightCustomer> customer) {
         this.customer = customer;
     }
 

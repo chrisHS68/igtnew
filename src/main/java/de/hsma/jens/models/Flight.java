@@ -19,7 +19,7 @@ public class Flight implements Serializable {
     private Date ankuftszeit;
     @Column
     private Date abflugzeit;
-    @ManyToMany(mappedBy = "customer")
+    @ManyToMany
     private Collection<FlightCustomer> customer = new ArrayList<>();
     @ManyToMany
     private Collection<Flightsegment> segments = new ArrayList<>();

@@ -24,7 +24,7 @@ public class Flugzeug implements Serializable {
     private Integer preis_ersteklasse;
     @Column
     private Integer preis_economy;
-    @ManyToMany(mappedBy = "flight")
+    @ManyToMany
     private Collection<Flight> flights = new ArrayList<>();
 
     public Integer getId() {

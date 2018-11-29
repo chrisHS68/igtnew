@@ -16,7 +16,7 @@ public class PhoneType implements Serializable {
     private Integer id;
     @Column
     private Integer number;
-    @ManyToMany(mappedBy = "phones")
+    @ManyToMany
     private Collection<FlightCustomer> phones = new ArrayList<>();
 
     public Integer getId() {
