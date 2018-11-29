@@ -1,6 +1,7 @@
 package de.hsma.jens.models;
 
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
@@ -10,6 +11,8 @@ import java.io.Serializable;
 @Indexed
 @Table(name = "Airports")
 public class Airport implements Serializable {
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     @Id
     private Integer id;
     @Column

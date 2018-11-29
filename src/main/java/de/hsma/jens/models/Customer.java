@@ -1,11 +1,9 @@
 package de.hsma.jens.models;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.search.annotations.Indexed;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,6 +15,8 @@ import java.util.Date;
 @Entity @Indexed
 @Table(name = "CUSTOMER")
 public class Customer implements Serializable {
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     @Id
     private Integer C_ID;
     @Column

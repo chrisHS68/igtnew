@@ -1,6 +1,7 @@
 package de.hsma.jens.models;
 
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
@@ -11,6 +12,8 @@ import java.util.Collection;
 @Indexed
 @Table(name = "Flightsegments")
 public class Flightsegment {
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     @Id
     private Integer id;
     @Column
