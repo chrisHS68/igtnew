@@ -20,7 +20,7 @@ public class PhoneType implements Serializable {
     @Column
     private Long number;
     @ManyToMany (mappedBy = "phones")
-    private List<FlightCustomer> phones = new ArrayList<FlightCustomer>();
+    private List<FlightCustomer> customers = new ArrayList<FlightCustomer>();
 
     public Integer getId() {
         return id;
@@ -38,12 +38,12 @@ public class PhoneType implements Serializable {
         this.number = number;
     }
 
-    public List<FlightCustomer> getPhones() {
-        return phones;
+    public List<FlightCustomer> getCustomer() {
+        return customers;
     }
 
-    public void setPhones(List<FlightCustomer> phones) {
-        this.phones = phones;
+    public void setCustomer(List<FlightCustomer> customer) {
+        this.customers = customer;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class PhoneType implements Serializable {
         return "PhoneType{" +
                 "id=" + id +
                 ", number=" + number +
-                ", phones=" + phones +
+                ", customers=" + customers +
                 '}';
     }
 }
