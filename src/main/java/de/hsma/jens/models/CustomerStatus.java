@@ -13,7 +13,7 @@ import java.util.Collection;
  **/
 @Entity
 @Indexed
-@Table(name = "Flights")
+@Table(name = "CUSTOMER_STATUS")
 public class CustomerStatus implements Serializable {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -24,7 +24,7 @@ public class CustomerStatus implements Serializable {
     @Column
     private Status customerStatus;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private Collection<FlightCustomer> customer;
 
     public Integer getId() {

@@ -6,12 +6,12 @@ import org.hibernate.search.annotations.Indexed;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 
 @Entity
 @Indexed
-@Table(name = "FlightCustomers")
+@Table(name = "F_CUSTOMER")
 public class FlightCustomer implements Serializable {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -24,13 +24,12 @@ public class FlightCustomer implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column
     private Status customerStatus;
-    @OneToMany
-    private Collection<CustomerAddress> customerAddresses = new ArrayList<>();
+    @OneToMany(mappedBy = "customer")
+    private List<CustomerAddress> customerAddresses = new ArrayList<CustomerAddress>();
     @ManyToMany
-    private Collection<PhoneType> phones = new ArrayList<>();
+    private List<PhoneType> phones = new ArrayList<PhoneType>();
     @ManyToMany
-    private  Collection<Flight> flight = new ArrayList<>();
-
+    private  List<Flight> flights = new ArrayList<Flight>();
 
     public Integer getId() {
         return id;
@@ -64,28 +63,28 @@ public class FlightCustomer implements Serializable {
         this.customerStatus = customerStatus;
     }
 
-    public Collection<CustomerAddress> getCustomerAddresses() {
+    public List<CustomerAddress> getCustomerAddresses() {
         return customerAddresses;
     }
 
-    public void setCustomerAddresses(Collection<CustomerAddress> customerAddresses) {
+    public void setCustomerAddresses(List<CustomerAddress> customerAddresses) {
         this.customerAddresses = customerAddresses;
     }
 
-    public Collection<PhoneType> getPhones() {
+    public List<PhoneType> getPhones() {
         return phones;
     }
 
-    public void setPhones(Collection<PhoneType> phones) {
+    public void setPhones(List<PhoneType> phones) {
         this.phones = phones;
     }
 
-    public Collection<Flight> getFlight() {
-        return flight;
+    public List<Flight> getFlights() {
+        return flights;
     }
 
-    public void setFlight(Collection<Flight> flight) {
-        this.flight = flight;
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
     }
 
     @Override
@@ -97,7 +96,7 @@ public class FlightCustomer implements Serializable {
                 ", customerStatus=" + customerStatus +
                 ", customerAddresses=" + customerAddresses +
                 ", phones=" + phones +
-                ", flight=" + flight +
+                ", flights=" + flights +
                 '}';
     }
 }

@@ -4,15 +4,13 @@ package de.hsma.jens.models;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.search.annotations.Indexed;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 
 
 @Entity
 @Indexed
-@Table(name = "CustomerAddress")
+@Table(name = "CUSTOMER_ADDRESS")
 public class CustomerAddress implements Serializable {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -26,8 +24,8 @@ public class CustomerAddress implements Serializable {
     private String ort;
     @Column
     private String hausnummer;
-    @OneToMany
-    private Collection<FlightCustomer> customer;
+    @ManyToOne
+    private FlightCustomer customer;
 
     public Integer getId() {
         return id;
@@ -69,11 +67,11 @@ public class CustomerAddress implements Serializable {
         this.hausnummer = hausnummer;
     }
 
-    public Collection<FlightCustomer> getCustomer() {
+    public FlightCustomer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Collection<FlightCustomer> customer) {
+    public void setCustomer(FlightCustomer customer) {
         this.customer = customer;
     }
 

@@ -6,11 +6,11 @@ import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Indexed
-@Table(name = "Flightsegments")
+@Table(name = "FLIGHTSEGMENT")
 public class Flightsegment {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -20,10 +20,70 @@ public class Flightsegment {
     private String name;
     @Column
     private Integer strecke;
-    @ManyToMany
-    private Collection<Flight> flights = new ArrayList<>();
-    @OneToMany
-    private Collection<Airport> zielflughafen = new ArrayList<>();
-    @OneToMany
-    private Collection<Airport> abflughafen = new ArrayList<>();
+    @ManyToMany (mappedBy = "segments")
+    private List<Flight> flights = new ArrayList<Flight>();
+    @ManyToOne
+    private Airport zielflughafen;
+    @ManyToOne
+    private Airport abflughafen;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getStrecke() {
+        return strecke;
+    }
+
+    public void setStrecke(Integer strecke) {
+        this.strecke = strecke;
+    }
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
+    }
+
+    public Airport getZielflughafen() {
+        return zielflughafen;
+    }
+
+    public void setZielflughafen(Airport zielflughafen) {
+        this.zielflughafen = zielflughafen;
+    }
+
+    public Airport getAbflughafen() {
+        return abflughafen;
+    }
+
+    public void setAbflughafen(Airport abflughafen) {
+        this.abflughafen = abflughafen;
+    }
+
+    @Override
+    public String toString() {
+        return "Flightsegment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", strecke=" + strecke +
+                ", flights=" + flights +
+                ", zielflughafen=" + zielflughafen +
+                ", abflughafen=" + abflughafen +
+                '}';
+    }
 }

@@ -7,11 +7,11 @@ import org.hibernate.search.annotations.Indexed;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Indexed
-@Table(name = "Flugzeuge")
+@Table(name = "FLUGZEUG")
 public class Flugzeug implements Serializable {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -27,8 +27,8 @@ public class Flugzeug implements Serializable {
     private Integer preis_ersteklasse;
     @Column
     private Integer preis_economy;
-    @ManyToMany
-    private Collection<Flight> flights = new ArrayList<>();
+    @OneToMany(mappedBy = "flugzeug")
+    private List<Flight> flights = new ArrayList<Flight>();
 
     public Integer getId() {
         return id;
@@ -78,11 +78,11 @@ public class Flugzeug implements Serializable {
         this.preis_economy = preis_economy;
     }
 
-    public Collection<Flight> getFlights() {
+    public List<Flight> getFlights() {
         return flights;
     }
 
-    public void setFlights(Collection<Flight> flights) {
+    public void setFlights(List<Flight> flights) {
         this.flights = flights;
     }
 

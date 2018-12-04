@@ -7,12 +7,12 @@ import org.hibernate.search.annotations.Indexed;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Indexed
-@Table(name = "Flights")
+@Table(name = "FLIGHT")
 public class Flight implements Serializable {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -22,10 +22,12 @@ public class Flight implements Serializable {
     private Date ankuftszeit;
     @Column
     private Date abflugzeit;
+    @ManyToOne
+    Flugzeug flugzeug;
+    @ManyToMany(mappedBy = "flights")
+    private List<FlightCustomer> customer = new ArrayList<>();
     @ManyToMany
-    private Collection<FlightCustomer> customer = new ArrayList<>();
-    @ManyToMany
-    private Collection<Flightsegment> segments = new ArrayList<>();
+    private List<Flightsegment> segments = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -51,19 +53,27 @@ public class Flight implements Serializable {
         this.abflugzeit = abflugzeit;
     }
 
-    public Collection<FlightCustomer> getCustomer() {
+    public Flugzeug getFlugzeug() {
+        return flugzeug;
+    }
+
+    public void setFlugzeug(Flugzeug flugzeug) {
+        this.flugzeug = flugzeug;
+    }
+
+    public List<FlightCustomer> getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Collection<FlightCustomer> customer) {
+    public void setCustomer(List<FlightCustomer> customer) {
         this.customer = customer;
     }
 
-    public Collection<Flightsegment> getSegments() {
+    public List<Flightsegment> getSegments() {
         return segments;
     }
 
-    public void setSegments(Collection<Flightsegment> segments) {
+    public void setSegments(List<Flightsegment> segments) {
         this.segments = segments;
     }
 
@@ -73,6 +83,7 @@ public class Flight implements Serializable {
                 "id=" + id +
                 ", ankuftszeit=" + ankuftszeit +
                 ", abflugzeit=" + abflugzeit +
+                ", flugzeug=" + flugzeug +
                 ", customer=" + customer +
                 ", segments=" + segments +
                 '}';

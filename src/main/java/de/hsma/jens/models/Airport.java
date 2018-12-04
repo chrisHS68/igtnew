@@ -6,13 +6,15 @@ import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Indexed
-@Table(name = "Airports")
+@Table(name = "AIRPORT")
 public class Airport implements Serializable {
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     @Id
     private Integer id;
     @Column
@@ -21,6 +23,10 @@ public class Airport implements Serializable {
     private String name;
     @Column
     private String Land;
+    @OneToMany(mappedBy = "zielflughafen")
+    private List<Flightsegment> zielflughafen = new ArrayList<Flightsegment>();
+    @OneToMany(mappedBy = "abflughafen")
+    private List<Flightsegment> abflughafen = new ArrayList<Flightsegment>();
 
     public Integer getId() {
         return id;
@@ -54,6 +60,22 @@ public class Airport implements Serializable {
         Land = land;
     }
 
+    public List<Flightsegment> getZielflughafen() {
+        return zielflughafen;
+    }
+
+    public void setZielflughafen(List<Flightsegment> zielflughafen) {
+        this.zielflughafen = zielflughafen;
+    }
+
+    public List<Flightsegment> getAbflughafen() {
+        return abflughafen;
+    }
+
+    public void setAbflughafen(List<Flightsegment> abflughafen) {
+        this.abflughafen = abflughafen;
+    }
+
     @Override
     public String toString() {
         return "Airport{" +
@@ -61,6 +83,8 @@ public class Airport implements Serializable {
                 ", kuerzel='" + kuerzel + '\'' +
                 ", name='" + name + '\'' +
                 ", Land='" + Land + '\'' +
+                ", zielflughafen=" + zielflughafen +
+                ", abflughafen=" + abflughafen +
                 '}';
     }
 }

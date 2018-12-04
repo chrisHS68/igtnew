@@ -6,21 +6,21 @@ import org.hibernate.search.annotations.Indexed;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 
 @Entity
 @Indexed
-@Table(name = "PhoneTypes")
+@Table(name = "PHONE_TYPE")
 public class PhoneType implements Serializable {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Id
     private Integer id;
     @Column
-    private Integer number;
-    @ManyToMany
-    private Collection<FlightCustomer> phones = new ArrayList<>();
+    private Long number;
+    @ManyToMany (mappedBy = "phones")
+    private List<FlightCustomer> phones = new ArrayList<FlightCustomer>();
 
     public Integer getId() {
         return id;
@@ -30,19 +30,19 @@ public class PhoneType implements Serializable {
         this.id = id;
     }
 
-    public Integer getNumber() {
+    public Long getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
-    public Collection<FlightCustomer> getPhones() {
+    public List<FlightCustomer> getPhones() {
         return phones;
     }
 
-    public void setPhones(Collection<FlightCustomer> phones) {
+    public void setPhones(List<FlightCustomer> phones) {
         this.phones = phones;
     }
 
