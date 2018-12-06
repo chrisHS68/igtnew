@@ -1,7 +1,6 @@
 package de.hsma.jens.controllers;
 
 import de.hsma.jens.models.CustomerAddress;
-import de.hsma.jens.models.FlightCustomer;
 import de.hsma.jens.tools.Config;
 import org.apache.log4j.Logger;
 
@@ -75,8 +74,38 @@ public class CustomerAdressController {
 
     ;
 
-    public int getAdress(int id) {
-        return 1;
+    public CustomerAddress getAdress(int addressID) {
+        CustomerAddress ca = null;
+
+
+        try {
+            EntityManager em = emf.createEntityManager();
+            tm.begin();
+
+            ca = em.find(CustomerAddress.class, addressID);
+            logger.info("Found customer: " + ca.toString());
+
+
+            em.flush();
+            em.close();
+            tm.commit();
+            // logger.info("TA ends");
+
+
+        } catch (NotSupportedException e) {
+            e.printStackTrace();
+        } catch (SystemException e) {
+            e.printStackTrace();
+        } catch (HeuristicMixedException e) {
+            e.printStackTrace();
+        } catch (HeuristicRollbackException e) {
+            e.printStackTrace();
+        } catch (RollbackException e) {
+            e.printStackTrace();
+        }
+
+
+        return ca;
 
     }
 
@@ -128,28 +157,192 @@ public class CustomerAdressController {
 
     ;
 
-    public void updateAdress(CustomerAddress a) {
+    public void updateAdress(CustomerAddress ca) {
+        try {
+            logger.info("Update CustomerAddress TA begins");
+            EntityManager em = emf.createEntityManager();
+            tm.setTransactionTimeout(Config.TRANSACTION_TIMEOUT);
+            tm.begin();
+
+
+            long queryStart = System.currentTimeMillis();
+
+            CustomerAddress addressToUpdate = em.find(CustomerAddress.class, ca.getId());
+            logger.info("Found CustomerAddress: " + addressToUpdate.toString());
+            logger.info("Updating CustomerAddress...");
+            addressToUpdate = ca;
+
+            em.merge(addressToUpdate);
+
+            long queryEnd = System.currentTimeMillis();
+
+
+            em.flush();
+            em.close();
+            tm.commit();
+            logger.info("Update CustomerAddress TA ends");
+
+            long queryTime = queryEnd - queryStart;
+
+            logger.info("CustomerAddress successfully persisted in " + queryTime + " ms.");
+
+        } catch (NotSupportedException e) {
+            e.printStackTrace();
+        } catch (SystemException e) {
+            e.printStackTrace();
+        } catch (HeuristicMixedException e) {
+            e.printStackTrace();
+        } catch (HeuristicRollbackException e) {
+            e.printStackTrace();
+        } catch (RollbackException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteAdress(int CustomerAddressID) {
+
+        try {
+            //logger.info("Delete flightcustomer TA begins");
+            EntityManager em = emf.createEntityManager();
+            tm.setTransactionTimeout(Config.TRANSACTION_TIMEOUT);
+            tm.begin();
+
+
+            // long queryStart = System.currentTimeMillis();
+
+            CustomerAddress ad = em.find(CustomerAddress.class, CustomerAddressID);
+            // logger.info("Found flightcustomer: " + ad.toString());
+            // logger.info("Deleting flightcustomer...");
+
+
+            em.remove(ad);
+
+            //  long queryEnd = System.currentTimeMillis();
+
+
+            em.flush();
+            em.close();
+            tm.commit();
+            //logger.info("Delete flightcustomer TA ends");
+
+            //  long queryTime = queryEnd - queryStart;
+
+            // logger.info("FlightCustomer successfully deleted in " + queryTime + " ms.");
+
+
+        } catch (NotSupportedException e) {
+            e.printStackTrace();
+        } catch (SystemException e) {
+            e.printStackTrace();
+        } catch (HeuristicMixedException e) {
+            e.printStackTrace();
+        } catch (HeuristicRollbackException e) {
+            e.printStackTrace();
+        } catch (RollbackException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    ;
+    public void deleteAllCustomerAddress() {
 
-    public void updateAdress(List<CustomerAddress> a) {
+        List<Integer> addresses;
+
+        try {
+
+
+            addresses = getAllCustomerAddressIDs();
+
+
+            logger.info("Delete all CustomerAddress TA begins");
+
+
+            long queryStart = System.currentTimeMillis();
+
+            for (Integer id : addresses) {
+
+                deleteAdress(id);
+            }
+
+
+            long queryEnd = System.currentTimeMillis();
+
+
+            logger.info("Delete all CustomerAddress TA ends");
+            long queryTime = queryEnd - queryStart;
+
+            logger.info(addresses.size() + " CustomerAddress successfully deleted in " + queryTime + " ms.");
+
+            String writeToFile = new String(Config.PERSISTENCE_UNIT_NAME + " DELETE: " + addresses.size() + " " + queryTime + "\n");
+            Files.write(Paths.get(Config.LOG_STORAGE_LOCATION), writeToFile.getBytes(), CREATE, APPEND);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public List<Integer> getAllCustomerAddressIDs() {
+
+        List<CustomerAddress> caIDs = new ArrayList<CustomerAddress>();
+        List<Integer> returnList = new ArrayList<Integer>();
+
+        try {
+            EntityManager em = emf.createEntityManager();
+
+            //String queryString = new String("SELECT c.C_ID FROM Customer c");
+            /*
+            some datastores (that uses indexes like Redis, Infinispan, Cassandra) cannot operate on single return values,
+            they always need to return the entire class
+             */
+
+            String queryString = new String("SELECT c FROM CustomerAddress c");
+            Query q = em.createQuery(queryString);
+
+
+            logger.info("Get all flightcustomerIDs TA begins");
+            tm.setTransactionTimeout(Config.TRANSACTION_TIMEOUT);
+            tm.begin();
+
+            long queryStart = System.currentTimeMillis();
+
+            caIDs = q.getResultList();
+
+            for (CustomerAddress ca : caIDs) {
+                returnList.add(ca.getId());
+            }
+
+
+            long queryEnd = System.currentTimeMillis();
+
+
+            em.flush();
+            em.close();
+            tm.commit();
+            logger.info("Get all CustomerAddress TA ends");
+
+            long queryTime = queryEnd - queryStart;
+
+            logger.info("Found " + caIDs.size() + " CustomerAddress IDs in " + queryTime + " ms.");
+
+
+        } catch (NotSupportedException e) {
+            e.printStackTrace();
+        } catch (SystemException e) {
+            e.printStackTrace();
+        } catch (HeuristicMixedException e) {
+            e.printStackTrace();
+        } catch (HeuristicRollbackException e) {
+            e.printStackTrace();
+        } catch (RollbackException e) {
+            e.printStackTrace();
+        }
+
+
+        return returnList;
 
     }
 
-    ;
-
-    public void deleteAdress(int id) {
-
-    }
-
-    ;
-
-    public void deleteAllAdress() {
-
-    }
-
-    ;
 
 }

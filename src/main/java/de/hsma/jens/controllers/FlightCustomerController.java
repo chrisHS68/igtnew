@@ -81,10 +81,6 @@ public class FlightCustomerController {
         }
     }
 
-    //Inteface Methods
-
-
-
     public List<FlightCustomer> getAllFlightCustomers() {
 
         List<FlightCustomer> fc = new ArrayList<FlightCustomer>();
@@ -127,11 +123,6 @@ public class FlightCustomerController {
 
 
         return fc;
-    }
-
-
-    public void FlightCustomer(List<FlightCustomer> fc) {
-
     }
 
 
