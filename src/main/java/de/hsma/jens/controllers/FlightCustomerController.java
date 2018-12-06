@@ -83,28 +83,6 @@ public class FlightCustomerController {
 
     //Inteface Methods
 
-  /*  public void createFlightCustomer(FlightCustomer fc){
-        try{
-            logger.info("Create customer TA begins");
-            EntityManager em = emf.createEntityManager();
-            tm.setTransactionTimeout(Config.TRANSACTION_TIMEOUT);
-            tm.begin();
-            long queryStart = System.currentTimeMillis();
-            em.persist(fc);
-            long queryEnd = System.currentTimeMillis();
-            em.flush();
-            em.close();
-            tm.commit();
-            logger.info("Create customers TA ends");
-            long queryTime = queryEnd - queryStart;
-            logger.info(1 + " customers persisted in DB in " + queryTime + " ms.");
-            String writeToFile = new String(Config.PERSISTENCE_UNIT_NAME + " CREATE: " + 1 + " " + queryTime + "\n");
-            Files.write(Paths.get(Config.LOG_STORAGE_LOCATION), writeToFile.getBytes(), CREATE, APPEND);
-            System.out.println("Time for Statement: " + queryTime);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    };*/;
 
 
     public List<FlightCustomer> getAllFlightCustomers() {

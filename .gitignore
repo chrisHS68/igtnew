@@ -26,3 +26,6 @@ buildNumber.properties
 # file: ~/.gitignore_global
 .DS_Store
 .idea
+
+#
+de.hsma.jens.models.*
