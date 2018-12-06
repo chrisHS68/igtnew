@@ -27,7 +27,7 @@ public class AirportController {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory(Config.PERSISTENCE_UNIT_NAME);
 
     //Interface Methods
-    public void createAirport(List<Airport>aList){
+    public void createAirports(List<Airport>aList){
         try {
             logger.info("Create Airport TA begins");
             EntityManager em = emf.createEntityManager();
@@ -398,7 +398,7 @@ public class AirportController {
 
             return returnList;
 
-        }
+        };
     };
 
 
