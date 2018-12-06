@@ -1,10 +1,11 @@
-import de.hsma.jens.controllers.FlightCustomerController;
+
 import de.hsma.jens.models.FlightCustomer;
 import de.hsma.jens.models.Status;
+
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
+import de.hsma.jens.controllers.FlightCustomerController;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,14 +36,14 @@ public class FlightCustomerControllerTest {
         flightCustomerController.getAllFlightCustomers().forEach(flightCustomer -> System.out.println(flightCustomer.toString()));
 
     }
-/**
- @After public void tearDown() throws Exception {
-
+ @After
+ public void tearDown() throws Exception {
  FlightCustomerController flightCustomerController = new FlightCustomerController();
-
  //custController.deleteAllCustomer();
-
-
  }
- **/
+
 }
+
+
+
+

@@ -81,7 +81,6 @@ public class FlightCustomerController {
         }
     }
 
-
     public List<FlightCustomer> getAllFlightCustomers() {
 
         List<FlightCustomer> fc = new ArrayList<FlightCustomer>();
@@ -555,4 +554,3 @@ public class FlightCustomerController {
 
 
 }
-

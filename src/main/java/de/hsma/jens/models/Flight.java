@@ -17,7 +17,7 @@ public class Flight implements Serializable {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Id
-    private Integer id;
+    private Integer FlightID;
     @Column
     private Date ankuftszeit;
     @Column
@@ -30,11 +30,11 @@ public class Flight implements Serializable {
     private List<Flightsegment> segments = new ArrayList<>();
 
     public Integer getId() {
-        return id;
+        return FlightID;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.FlightID = FlightID;
     }
 
     public Date getAnkuftszeit() {
@@ -80,7 +80,7 @@ public class Flight implements Serializable {
     @Override
     public String toString() {
         return "Flight{" +
-                "id=" + id +
+                "id=" + FlightID +
                 ", ankuftszeit=" + ankuftszeit +
                 ", abflugzeit=" + abflugzeit +
                 ", flugzeug=" + flugzeug +
