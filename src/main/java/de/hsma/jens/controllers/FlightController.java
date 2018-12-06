@@ -2,7 +2,6 @@ package de.hsma.jens.controllers;
 
 
 import de.hsma.jens.models.Flight;
-import de.hsma.jens.models.FlightCustomer;
 import de.hsma.jens.tools.Config;
 import org.apache.log4j.Logger;
 import org.hibernate.CacheMode;
