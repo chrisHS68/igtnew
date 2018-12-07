@@ -1,31 +1,23 @@
-import de.hsma.jens.controllers.AirportController;
-import de.hsma.jens.controllers.FlightController;
-import de.hsma.jens.controllers.FlightCustomerController;
-import de.hsma.jens.models.Flight;
-import de.hsma.jens.models.FlightCustomer;
-import org.apache.lucene.search.similarities.Lambda;
 
-import java.util.Date;
-import java.util.List;
+import de.hsma.jens.models.CustomerAddress;
+import de.hsma.jens.models.FlightCustomer;
+import de.hsma.jens.models.PhoneType;
+import de.hsma.jens.models.Status;
+
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
-        FlightCustomer flightCustomer = new FlightCustomer();
-//        FlightCustomerController flightCustomerController = new FlightCustomerController();
-
         //Abflughafen auswählen
         System.out.println("Abflughafen wählen");
-//        AirportController airportController = new AirportController();
-//        airportController.getAllAirports().forEach(airport -> System.out.println(airport.toString()));
+
         Scanner scanner = new Scanner(System. in);
         Integer abflugEingabe = Integer.parseInt(scanner.nextLine());
         System.out.println("Gewählter Abflughafen: "+ abflugEingabe);
 
         //Zielflughafen auswählen
         System.out.println("Zielflughafen wählen");
-//        airportController.getAllAirports().forEach(airport -> System.out.println(airport.toString()));
         Integer zielEingabe = Integer.parseInt(scanner.nextLine());
         System.out.println("Gewählter Zielflughafen: "+ zielEingabe);
 
@@ -40,9 +32,71 @@ public class App {
         System.out.println("Gewähltes Datum: "+rückflugdatum);
 
         //Flüge anzeigen
-       // FlightController flightController = new FlightController();
-       // List <Flight> possibleFlights= flightController.getAllFlight();
         System.out.println("Kein Flug verfügbar");
+
+        //Teilfluganbieten
+
+        //Strecke Berechnen
+        int strecke = 800;
+        System.out.println("Die Strecke beträgt: "+strecke+"km");
+
+        //Abflug und Ankunftszeit anzeigen
+        int abflugzeit = 1;
+        int ankunftzeit = 1;
+        System.out.println("Ablugzeit: "+abflugzeit);
+        System.out.println("Ankuftzeit: "+ankunftzeit);
+
+        //Sitzplatz Art wählen
+        System.out.println("Flugklasse wählen:");
+        System.out.println("(1)Erste Klasse");
+        System.out.println("(2)Economy");
+        int auswahl = Integer.parseInt(scanner.nextLine());
+
+        //Kundendaten eingeben
+        FlightCustomer flightCustomer = new FlightCustomer();
+        flightCustomer.setId(1);
+
+        CustomerAddress customerAddress = new CustomerAddress();
+        customerAddress.setId(1);
+        System.out.println("Straße eingeben: ");
+        customerAddress.setStrasse(scanner.nextLine());
+        System.out.println("Hausnummer eingeben: ");
+        customerAddress.setHausnummer(scanner.nextLine());
+        System.out.println("PLZ eingeben: ");
+        customerAddress.setPlz(scanner.nextLine());
+        System.out.println("Ort eigeben: ");
+        customerAddress.setOrt(scanner.nextLine());
+
+        PhoneType phone = new PhoneType();
+        phone.setId(1);
+        System.out.println("Telefonnummer eingeben:");
+        int phonenumber = Integer.parseInt(scanner.nextLine());
+        phone.setNumber(new Long(phonenumber));
+
+        flightCustomer.setCustomerAddress(customerAddress);
+
+        //Kundenstatus anzeigen
+        Status kundestatus = Status.NONE;
+        System.out.println("Aktueller Kundenstatus: " + kundestatus);
+
+        //Preisermittlung starten
+        Integer preis = 120;
+        System.out.println("Flugpreis" + preis + "€");
+
+        //Flug Buchen
+        System.out.println("Flug buchen? ");
+        System.out.println("1: JA ");
+        System.out.println("2: NEIN");
+        int buchungswahl = Integer.parseInt(scanner.nextLine());
+        if(buchungswahl == 1){
+            System.out.println("Flug gebucht");
+        }else if (buchungswahl == 2){
+            System.out.println("Flug nicht gebucht!!");
+        }else {
+            System.out.println("Buchung abgebrochen");
+        }
+
+
     }
 
 }
