@@ -1,13 +1,14 @@
 
-import de.hsma.jens.models.CustomerAddress;
-import de.hsma.jens.models.FlightCustomer;
-import de.hsma.jens.models.PhoneType;
-import de.hsma.jens.models.Status;
+import de.hsma.jens.models.*;
+import de.hsma.jens.tools.ExampleScenario;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+
+        List<Flight> flightList = ExampleScenario.createExampleFlights();
 
         //Abflughafen auswählen
         System.out.println("Abflughafen wählen");
@@ -96,7 +97,5 @@ public class App {
             System.out.println("Buchung abgebrochen");
         }
 
-
     }
-
 }
