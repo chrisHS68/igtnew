@@ -26,8 +26,8 @@ public class FlightCustomerPopulator {
         int FC_JAHRESMEILEN = 0;
         List FC_PHONE = ptList;
         List FC_FLIGHTS = flList;
-        // EnumType.STRING FC_STATUS = Status.NONE;
-        List FC_ADRESS = caList;
+        Status FC_STATUS = Status.NONE;
+        String FC_ADRESS = ("Teststrasse" + i);
 
 
         try {
@@ -42,8 +42,8 @@ public class FlightCustomerPopulator {
                     myFlightCustomer.setName("Name" + i);
                     myFlightCustomer.setPhones(ptList);
                     myFlightCustomer.setFlights(flList);
-                    // myFlightCustomer.setCustomerStatus(FC_STATUS);
-                    myFlightCustomer.setCustomerAddresses(caList);
+                    myFlightCustomer.setCustomerStatus(FC_STATUS);
+                   // myFlightCustomer.setCustomerAddresses(FC_ADRESS);
                     myFlightCustomer.setGesamtmeilen(FC_GESMANTMELEN);
                     myFlightCustomer.setJahresmeilen(FC_JAHRESMEILEN);
 
@@ -97,34 +97,6 @@ public class FlightCustomerPopulator {
                 }
 
             return ptList;
-
-    }
-
-    //Populator for Addresses
-
-    public static List<CustomerAddress> populateAddressesAsList(int i) {
-
-        List<CustomerAddress> caList = new ArrayList<CustomerAddress>();
-
-
-        for (i = 1; i <= 100; i++) {
-
-            CustomerAddress myCustomerAddress = new CustomerAddress();
-
-            // Set parameter
-
-            myCustomerAddress.setId(i);
-            myCustomerAddress.setStrasse("Teststrasse" + i);
-            myCustomerAddress.setHausnummer(i + "");
-            myCustomerAddress.setOrt("Testort" + i);
-            myCustomerAddress.setPlz("687" + i + i);
-
-
-            caList.add(myCustomerAddress);
-        }
-
-        return caList;
-
 
     }
 
