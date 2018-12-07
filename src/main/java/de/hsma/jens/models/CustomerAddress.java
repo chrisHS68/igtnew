@@ -12,8 +12,8 @@ import java.io.Serializable;
 @Indexed
 @Table(name = "CUSTOMER_ADDRESS")
 public class CustomerAddress implements Serializable {
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+/*    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")*/
     @Id
     private Integer id;
     @Column
@@ -24,8 +24,8 @@ public class CustomerAddress implements Serializable {
     private String ort;
     @Column
     private String hausnummer;
-    @ManyToOne
-    private FlightCustomer customer;
+/*    @OneToOne
+    private FlightCustomer customer;*/
 
     public Integer getId() {
         return id;
@@ -67,13 +67,6 @@ public class CustomerAddress implements Serializable {
         this.hausnummer = hausnummer;
     }
 
-    public FlightCustomer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(FlightCustomer customer) {
-        this.customer = customer;
-    }
 
     @Override
     public String toString() {
@@ -83,7 +76,6 @@ public class CustomerAddress implements Serializable {
                 ", plz='" + plz + '\'' +
                 ", ort='" + ort + '\'' +
                 ", hausnummer='" + hausnummer + '\'' +
-                ", customer=" + customer +
                 '}';
     }
 }

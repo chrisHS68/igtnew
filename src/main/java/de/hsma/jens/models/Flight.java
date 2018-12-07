@@ -14,8 +14,8 @@ import java.util.List;
 @Indexed
 @Table(name = "FLIGHT")
 public class Flight implements Serializable {
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+/*    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")*/
     @Id
     private Integer FlightID;
     @Column
@@ -26,7 +26,7 @@ public class Flight implements Serializable {
     Flugzeug flugzeug;
     @ManyToMany(mappedBy = "flights")
     private List<FlightCustomer> customer = new ArrayList<>();
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     private List<Flightsegment> segments = new ArrayList<>();
 
     public Integer getId() {

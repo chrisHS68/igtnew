@@ -12,8 +12,8 @@ import java.util.List;
 @Indexed
 @Table(name = "FLIGHTSEGMENT")
 public class Flightsegment {
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+/*    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")*/
     @Id
     private Integer id;
     @Column
