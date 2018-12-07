@@ -33,7 +33,7 @@ public class FlightControllerTest {
      * <p>
      * }
      **/
-    /**
+
     @Test
     public void createFlightTest() {
 
@@ -93,12 +93,12 @@ public class FlightControllerTest {
         flightController.getAllFlight().forEach(flight -> System.out.println(flight.toString()));
 */
     }
-    /**/
+
 /**
  @After public void tearDown() throws Exception {
  FlightController flightController = new FlightController();
  //flController.deleteAllFlights();
  }
  **/
-/**/
+
 }
