@@ -18,6 +18,8 @@ public class FlightCustomer implements Serializable {
     @Id
     private Integer id;
     @Column
+    private String name;
+    @Column
     private Integer gesamtmeilen;
     @Column
     private Integer jahresmeilen;
@@ -37,6 +39,14 @@ public class FlightCustomer implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Integer getGesamtmeilen() {

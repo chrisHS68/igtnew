@@ -54,4 +54,10 @@ public class PhoneType implements Serializable {
                 ", customers=" + customers +
                 '}';
     }
+
+    public void setNumber(Integer n)  {
+        this.number = number;
+    }
+
+
 }
