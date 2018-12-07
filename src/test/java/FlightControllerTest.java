@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 public class FlightControllerTest {
+
     /**
      * @Before public void setUp() throws Exception {
      * <p>
@@ -33,6 +34,7 @@ public class FlightControllerTest {
      * <p>
      * }
      **/
+    /**
     @Test
     public void createFlightTest() {
 
@@ -92,10 +94,12 @@ public class FlightControllerTest {
         flightController.getAllFlight().forEach(flight -> System.out.println(flight.toString()));
 
     }
+    /**/
 /**
  @After public void tearDown() throws Exception {
  FlightController flightController = new FlightController();
  //flController.deleteAllFlights();
  }
  **/
+/**/
 }
