@@ -38,54 +38,54 @@ public class FlightsegmentController {
     public void createFlightSegment(List<Flightsegment> fsList){
 
 
-    try {
-        logger.info("Create Flightsegment TA begins");
-        EntityManager em = emf.createEntityManager();
-        tm.setTransactionTimeout(Config.TRANSACTION_TIMEOUT);
-        tm.begin();
+        try {
+            logger.info("Create Flightsegment TA begins");
+            EntityManager em = emf.createEntityManager();
+            tm.setTransactionTimeout(Config.TRANSACTION_TIMEOUT);
+            tm.begin();
 
-        long queryStart = System.currentTimeMillis();
+            long queryStart = System.currentTimeMillis();
 
-        for (Flightsegment fs : fsList) {
-            em.persist(fs);
+            for (Flightsegment fs : fsList) {
+                em.persist(fs);
+            }
+
+            long queryEnd = System.currentTimeMillis();
+
+            em.flush();
+            em.close();
+            tm.commit();
+
+
+            logger.info("Create Flightsegment TA ends");
+            long queryTime = queryEnd - queryStart;
+
+            logger.info(fsList.size() + " Flightsegments persisted in DB in " + queryTime + " ms.");
+
+            String writeToFile = new String(Config.PERSISTENCE_UNIT_NAME + " CREATE: " + fsList.size() + " " + queryTime + "\n");
+
+            Files.write(Paths.get(Config.LOG_STORAGE_LOCATION), writeToFile.getBytes(), CREATE, APPEND);
+
+
+        } catch (
+                NotSupportedException e) {
+            e.printStackTrace();
+        } catch (
+                SystemException e) {
+            e.printStackTrace();
+        } catch (
+                HeuristicMixedException e) {
+            e.printStackTrace();
+        } catch (
+                HeuristicRollbackException e) {
+            e.printStackTrace();
+        } catch (RollbackException e) {
+            e.printStackTrace();
+        } catch (
+                IOException e) {
+            e.printStackTrace();
         }
-
-        long queryEnd = System.currentTimeMillis();
-
-        em.flush();
-        em.close();
-        tm.commit();
-
-
-        logger.info("Create Flightsegment TA ends");
-        long queryTime = queryEnd - queryStart;
-
-        logger.info(fsList.size() + " Flightsegments persisted in DB in " + queryTime + " ms.");
-
-        String writeToFile = new String(Config.PERSISTENCE_UNIT_NAME + " CREATE: " + fsList.size() + " " + queryTime + "\n");
-
-        Files.write(Paths.get(Config.LOG_STORAGE_LOCATION), writeToFile.getBytes(), CREATE, APPEND);
-
-
-    } catch (
-    NotSupportedException e) {
-        e.printStackTrace();
-    } catch (
-    SystemException e) {
-        e.printStackTrace();
-    } catch (
-    HeuristicMixedException e) {
-        e.printStackTrace();
-    } catch (
-    HeuristicRollbackException e) {
-        e.printStackTrace();
-    } catch (RollbackException e) {
-        e.printStackTrace();
-    } catch (
-    IOException e) {
-        e.printStackTrace();
-    }
-};
+    };
 
 
     //Inteface Methods
