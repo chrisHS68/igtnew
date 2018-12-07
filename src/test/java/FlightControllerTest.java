@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import de.hsma.jens.controllers.FlightController;
-import de.hsma.jens.models.FlightCustomer;
 import de.hsma.jens.models.Status;
 import org.junit.After;
 import org.junit.Before;
