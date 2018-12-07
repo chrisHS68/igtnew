@@ -46,6 +46,8 @@ public class FlightCustomerController {
             long queryStart = System.currentTimeMillis();
 
             for (FlightCustomer fc : cList) {
+                em.persist(fc.getCustomerAddress());
+                em.persist(fc.getPhones().get(0));
                 em.persist(fc);
             }
 
