@@ -13,8 +13,8 @@ import java.util.List;
 @Indexed
 @Table(name = "F_CUSTOMER")
 public class FlightCustomer implements Serializable {
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+/*    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")*/
     @Id
     private Integer id;
     @Column
@@ -24,8 +24,8 @@ public class FlightCustomer implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column
     private Status customerStatus;
-    @OneToMany(mappedBy = "customer")
-    private List<CustomerAddress> customerAddresses = new ArrayList<CustomerAddress>();
+    @OneToOne
+    CustomerAddress customerAddress;
     @ManyToMany
     private List<PhoneType> phones = new ArrayList<PhoneType>();
     @ManyToMany
@@ -63,12 +63,12 @@ public class FlightCustomer implements Serializable {
         this.customerStatus = customerStatus;
     }
 
-    public List<CustomerAddress> getCustomerAddresses() {
-        return customerAddresses;
+    public CustomerAddress getCustomerAddress() {
+        return customerAddress;
     }
 
-    public void setCustomerAddresses(List<CustomerAddress> customerAddresses) {
-        this.customerAddresses = customerAddresses;
+    public void setCustomerAddress(CustomerAddress customerAddress) {
+        this.customerAddress = customerAddress;
     }
 
     public List<PhoneType> getPhones() {
@@ -94,7 +94,7 @@ public class FlightCustomer implements Serializable {
                 ", gesamtmeilen=" + gesamtmeilen +
                 ", jahresmeilen=" + jahresmeilen +
                 ", customerStatus=" + customerStatus +
-                ", customerAddresses=" + customerAddresses +
+                ", customerAddress=" + customerAddress +
                 ", phones=" + phones +
                 ", flights=" + flights +
                 '}';

@@ -13,8 +13,8 @@ import java.util.List;
 @Indexed
 @Table(name = "AIRPORT")
 public class Airport implements Serializable {
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+/*    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")*/
     @Id
     private Integer id;
     @Column
