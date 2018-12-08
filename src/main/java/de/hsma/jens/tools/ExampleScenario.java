@@ -26,24 +26,24 @@ public class ExampleScenario {
         flight1.setAnkuftszeit(new Date(2018, 12, 11));
 
         flight2.setId(2);
-        flight1.setAbflugzeit(new Date(2018, 12, 11));
-        flight1.setAnkuftszeit(new Date(2018, 12, 11));
+        flight2.setAbflugzeit(new Date(2018, 12, 11));
+        flight2.setAnkuftszeit(new Date(2018, 12, 11));
 
         flight3.setId(3);
-        flight1.setAbflugzeit(new Date(2018, 12, 11));
-        flight1.setAnkuftszeit(new Date(2018, 12, 11));
+        flight3.setAbflugzeit(new Date(2018, 12, 11));
+        flight3.setAnkuftszeit(new Date(2018, 12, 11));
 
         flight4.setId(4);
-        flight1.setAbflugzeit(new Date(2018, 12, 11));
-        flight1.setAnkuftszeit(new Date(2018, 12, 11));
+        flight4.setAbflugzeit(new Date(2018, 12, 11));
+        flight4.setAnkuftszeit(new Date(2018, 12, 11));
 
         flight5.setId(5);
-        flight1.setAbflugzeit(new Date(2018, 12, 11));
-        flight1.setAnkuftszeit(new Date(2018, 12, 11));
+        flight5.setAbflugzeit(new Date(2018, 12, 11));
+        flight5.setAnkuftszeit(new Date(2018, 12, 11));
 
         flight6.setId(6);
-        flight1.setAbflugzeit(new Date(2018, 12, 11));
-        flight1.setAnkuftszeit(new Date(2018, 12, 11));
+        flight6.setAbflugzeit(new Date(2018, 12, 11));
+        flight6.setAnkuftszeit(new Date(2018, 12, 11));
 
         //Flugzeuge anlegen
         Flugzeug flugzeug1 = new Flugzeug();
@@ -195,6 +195,14 @@ public class ExampleScenario {
 
         flight5.setFlugzeug(flugzeug3);
         flight6.setFlugzeug(flugzeug3);
+
+        flightList.add(flight1);
+        flightList.add(flight2);
+        flightList.add(flight3);
+        flightList.add(flight4);
+        flightList.add(flight5);
+        flightList.add(flight6);
+
 
         return flightList;
     }

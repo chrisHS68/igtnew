@@ -1,4 +1,5 @@
 
+import de.hsma.jens.controllers.FlightController;
 import de.hsma.jens.models.*;
 import de.hsma.jens.tools.ExampleScenario;
 
@@ -9,6 +10,9 @@ public class App {
     public static void main(String[] args) {
 
         List<Flight> flightList = ExampleScenario.createExampleFlights();
+
+        FlightController flightController = new FlightController();
+        flightController.createFlight(flightList);
 
         //Abflughafen auswählen
         System.out.println("Abflughafen wählen");

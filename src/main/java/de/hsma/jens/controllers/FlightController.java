@@ -2,6 +2,7 @@ package de.hsma.jens.controllers;
 
 
 import de.hsma.jens.models.Flight;
+import de.hsma.jens.models.Flugzeug;
 import de.hsma.jens.tools.Config;
 import org.apache.log4j.Logger;
 import org.hibernate.CacheMode;
@@ -35,6 +36,7 @@ public class FlightController {
 
     //Inteface Methods
     public void createFlight(List<Flight> fList){
+
         try {
             logger.info("Create flight TA begins");
             EntityManager em = emf.createEntityManager();
@@ -44,6 +46,10 @@ public class FlightController {
             long queryStart = System.currentTimeMillis();
 
             for (Flight fl : fList) {
+                em.persist(fl.getFlugzeug());
+                em.persist(fl.getSegments().get(0).getAbflughafen());
+                em.persist(fl.getSegments().get(0).getZielflughafen());
+                em.persist(fl.getSegments().get(0));
                 em.persist(fl);
             }
 

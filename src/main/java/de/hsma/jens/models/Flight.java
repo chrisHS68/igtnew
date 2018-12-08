@@ -1,7 +1,6 @@
 package de.hsma.jens.models;
 
 
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
@@ -17,7 +16,7 @@ public class Flight implements Serializable {
 /*    @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")*/
     @Id
-    private Integer FlightID;
+    private Integer id;
     @Column
     private Date ankuftszeit;
     @Column
@@ -30,11 +29,11 @@ public class Flight implements Serializable {
     private List<Flightsegment> segments = new ArrayList<>();
 
     public Integer getId() {
-        return FlightID;
+        return id;
     }
 
     public void setId(Integer id) {
-        this.FlightID = FlightID;
+        this.id = id;
     }
 
     public Date getAnkuftszeit() {
@@ -80,7 +79,7 @@ public class Flight implements Serializable {
     @Override
     public String toString() {
         return "Flight{" +
-                "id=" + FlightID +
+                "id=" + id +
                 ", ankuftszeit=" + ankuftszeit +
                 ", abflugzeit=" + abflugzeit +
                 ", flugzeug=" + flugzeug +
