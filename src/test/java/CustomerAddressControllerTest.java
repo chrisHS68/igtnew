@@ -9,7 +9,7 @@ import java.util.List;
 public class CustomerAddressControllerTest {
     @Test
     public void createAddressTest() {
-        CustomerAddress ca = new CustomerAddress();
+      /*  CustomerAddress ca = new CustomerAddress();
         ca.setStrasse("Test-Straße");
         ca.setPlz("68305");
         ca.setOrt("Mannheim");
@@ -20,6 +20,6 @@ public class CustomerAddressControllerTest {
         customerAdressController.createAdress(addresses);
         customerAdressController
                 .getAllAdress()
-                .forEach(customerAddress -> System.out.println(customerAddress.toString()));
+                .forEach(customerAddress -> System.out.println(customerAddress.toString()));**/
     }
 }

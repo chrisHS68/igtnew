@@ -27,7 +27,7 @@ public class FlightCustomerControllerTest {
      **/
     @Test
     public void createCustomersTest() {
-        //Customer Anlegen
+       /* //Customer Anlegen
         FlightCustomer fc1 = new FlightCustomer();
         fc1.setId(2);
         fc1.setJahresmeilen(0);
@@ -64,16 +64,16 @@ public class FlightCustomerControllerTest {
 
 
         //Transaktion Ausführen
-     /*   PhoneTypeController phoneTypeController = new PhoneTypeController();
-        phoneTypeController.createPhoneType(phoneTypeList);*/
+     *//*   PhoneTypeController phoneTypeController = new PhoneTypeController();
+        phoneTypeController.createPhoneType(phoneTypeList);*//*
         FlightCustomerController flightCustomerController = new FlightCustomerController();
         flightCustomerController.createFlightCustomers(flightCustomerList);
         flightCustomerController.getAllFlightCustomers().forEach(flightCustomer -> System.out.println(flightCustomer.toString()));
-
+*/
     }
  @After
  public void tearDown() throws Exception {
- FlightCustomerController flightCustomerController = new FlightCustomerController();
+ //FlightCustomerController flightCustomerController = new FlightCustomerController();
  //custController.deleteAllCustomer();
  }
 
