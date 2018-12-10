@@ -47,9 +47,11 @@ public class PopulatorController {
 
             logger.info("Customers persisted in DB in " + queryTime + " ms.");
 
-            String writeToFile = new String(Config.PERSISTENCE_UNIT_NAME + " CREATE: " + 1 + " " + queryTime + "\n");
+            System.out.println(queryTime);
 
-            Files.write(Paths.get(Config.LOG_STORAGE_LOCATION), writeToFile.getBytes(), CREATE, APPEND);
+            //String writeToFile = new String(Config.PERSISTENCE_UNIT_NAME + " CREATE: " + 1 + " " + queryTime + "\n");
+
+            //Files.write(Paths.get(Config.LOG_STORAGE_LOCATION), writeToFile.getBytes(), CREATE, APPEND);
 
 
         } catch (NotSupportedException e) {
