@@ -43,7 +43,7 @@ public class FlightCustomerPopulator {
                     myFlightCustomer.setPhones(ptList);
                     myFlightCustomer.setFlights(flList);
                     myFlightCustomer.setCustomerStatus(FC_STATUS);
-                   // myFlightCustomer.setCustomerAddresses(FC_ADRESS);
+                   // myFlightCustomer.setCustomerAddress(FC_ADRESS);
                     myFlightCustomer.setGesamtmeilen(FC_GESMANTMELEN);
                     myFlightCustomer.setJahresmeilen(FC_JAHRESMEILEN);
 
@@ -53,7 +53,7 @@ public class FlightCustomerPopulator {
 
                 } catch (java.lang.Exception ex) {
                     System.err.println("Unable to populate FLIGHTCUSTOMER table");
-                    System.out.println("FC_ID=" + i + //" FC_NAME=" + FC_NAME
+                    System.out.println("FC_ID=" + i + " FC_NAME=" + FC_NAME +
                             " FC_PHONE=" + FC_PHONE + " FC_FLIGHTS="
                             + FC_FLIGHTS + //*" FC_STATUS=" + FC_STATUS +
                             " FC_ADRESS=" + FC_ADRESS + " FC_GESAMTMEILEN= " + FC_GESMANTMELEN +

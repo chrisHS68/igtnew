@@ -81,6 +81,7 @@ public class FlightCustomer implements Serializable {
         this.customerAddress = customerAddress;
     }
 
+
     public List<PhoneType> getPhones() {
         return phones;
     }
@@ -109,4 +110,5 @@ public class FlightCustomer implements Serializable {
                 ", flights=" + flights +
                 '}';
     }
+
 }
