@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static de.hsma.jens.tools.FlightCustomerPopulator.populateCustomerAsList;
 import static java.nio.file.StandardOpenOption.APPEND;
 import static java.nio.file.StandardOpenOption.CREATE;
 
@@ -31,8 +32,10 @@ public class PopulatorController {
 
             long queryStart = System.currentTimeMillis();
 
-         //   em.persist(flightCustomer.getFlightCustomerAsList());
-         //   em.persist(flightCustomer);
+            em.persist(populateCustomerAsList(100));
+
+           // em.persist(flightCustomer.getFlightCustomerAsList());
+           // em.persist(flightCustomer);
 
 
             long queryEnd = System.currentTimeMillis();
