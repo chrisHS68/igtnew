@@ -34,7 +34,6 @@ public class App {
             fcList.add(flightCustomer);
             fcController.createFlightCustomers(fcList);
 
-
             //Alle vefügbaren Fluhäfen abrufen
             AirportController flugzeugController = new AirportController();
             List <Airport> airportList = new ArrayList<>();
@@ -73,7 +72,6 @@ public class App {
             System.out.println("Gewähltes Datum: " + rückflugdatum.toString());
 
             //Flüge anzeigen
-
             List<Flight> möglicheFlüge = new ArrayList<>();
             for (Flight f: flightList) {
                 if(f.getSegments().get(0).getAbflughafen().getId() == abflugEingabe &&
@@ -93,8 +91,8 @@ public class App {
             System.out.println("Die Strecke beträgt: " + strecke + "km");
 
             //Abflug und Ankunftszeit anzeigen
-            int abflugzeit = 1;
-            int ankunftzeit = 1;
+            Date abflugzeit = möglicheFlüge.get(0).getAbflugzeit();
+            Date ankunftzeit = möglicheFlüge.get(0).getAnkuftszeit();
             System.out.println("Ablugzeit: " + abflugzeit);
             System.out.println("Ankuftzeit: " + ankunftzeit);
 

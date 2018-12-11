@@ -50,6 +50,7 @@ public class FlightCustomerController {
                 if (fc.getCustomerAddress() != null && fc.getPhones().get(0) != null){
                     em.persist(fc.getCustomerAddress());
                     em.persist(fc.getPhones().get(0));
+                    em.persist(fc);
 
                 //Falls kein Phonetype und Address vorhanden
                 }else{
@@ -382,7 +383,7 @@ public class FlightCustomerController {
             they always need to return the entire class
              */
 
-            String queryString = new String("SELECT c FROM Customer c");
+            String queryString = new String("SELECT c FROM FlightCustomer c");
             Query q = em.createQuery(queryString);
 
 

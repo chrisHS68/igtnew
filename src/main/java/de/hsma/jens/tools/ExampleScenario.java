@@ -21,29 +21,45 @@ public class ExampleScenario {
         Flight flight5 = new Flight();
         Flight flight6 = new Flight();
 
+        Date date1 = new Date(2018, 12, 14);
+        date1.setHours(7);
+        date1.setMinutes(30);
+        Date date2 = new Date(2018, 12, 14);
+        date2.setHours(7);
+        Date date3 = new Date(2018, 12, 14);
+        date3.setHours(7);
+        date3.setMinutes(30);
+        Date date4 = new Date(2018, 12, 14);
+        date4.setHours(20);
+        Date date5 = new Date(2018, 12, 14);
+        date5.setHours(21);
+        Date date6 = new Date(2018, 12, 14);
+        date6.setHours(22);
+
+
         flight1.setId(1);
-        flight1.setAbflugzeit(new Date(2018, 12, 11));
-        flight1.setAnkuftszeit(new Date(2018, 12, 11));
+        flight1.setAbflugzeit(date1);
+        flight1.setAnkuftszeit(date6);
 
         flight2.setId(2);
-        flight2.setAbflugzeit(new Date(2018, 12, 11));
-        flight2.setAnkuftszeit(new Date(2018, 12, 11));
+        flight2.setAbflugzeit(date2);
+        flight2.setAnkuftszeit(date5);
 
         flight3.setId(3);
-        flight3.setAbflugzeit(new Date(2018, 12, 11));
-        flight3.setAnkuftszeit(new Date(2018, 12, 11));
+        flight3.setAbflugzeit(date3);
+        flight3.setAnkuftszeit(date5);
 
         flight4.setId(4);
-        flight4.setAbflugzeit(new Date(2018, 12, 11));
-        flight4.setAnkuftszeit(new Date(2018, 12, 11));
+        flight4.setAbflugzeit(date1);
+        flight4.setAnkuftszeit(date4);
 
         flight5.setId(5);
-        flight5.setAbflugzeit(new Date(2018, 12, 11));
-        flight5.setAnkuftszeit(new Date(2018, 12, 11));
+        flight5.setAbflugzeit(date2);
+        flight5.setAnkuftszeit(date5);
 
         flight6.setId(6);
-        flight6.setAbflugzeit(new Date(2018, 12, 11));
-        flight6.setAnkuftszeit(new Date(2018, 12, 11));
+        flight6.setAbflugzeit(date3);
+        flight6.setAnkuftszeit(date6);
 
         //Flugzeuge anlegen
         Flugzeug flugzeug1 = new Flugzeug();
