@@ -24,8 +24,16 @@ public class CustomerAddress implements Serializable {
     private String ort;
     @Column
     private String hausnummer;
-/*    @OneToOne
-    private FlightCustomer customer;*/
+    @OneToOne
+    private FlightCustomer customer;
+
+    public FlightCustomer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(FlightCustomer customer) {
+        this.customer = customer;
+    }
 
     public Integer getId() {
         return id;

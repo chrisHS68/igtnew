@@ -12,122 +12,53 @@ import java.util.List;
 public class FlightCustomerPopulator {
 
     // Populater for customerList
-    public static List<FlightCustomer> populateCustomerAsList(int i) {
+    public static List<FlightCustomer> populateCustomerAsList(int anzahl) {
 
         List<FlightCustomer> fcList = new ArrayList<FlightCustomer>();
 
-        List<PhoneType> ptList = new ArrayList<PhoneType>();
-        List<CustomerAddress> caList = new ArrayList<CustomerAddress>();
-        List<Flight> flList = new ArrayList<Flight>();
-
-        int FC_ID = 0;
-        String FC_NAME = ("Testname");
-        int FC_GESMANTMELEN = 0;
-        int FC_JAHRESMEILEN = 0;
-        List FC_PHONE = ptList;
-        List FC_FLIGHTS = flList;
+        int FC_GESMANTMELEN = 10000;
+        int FC_JAHRESMEILEN = 100;
         Status FC_STATUS = Status.NONE;
-        String FC_ADRESS = ("Teststrasse" + i);
 
 
-        try {
+        for (int i = 1; i <= anzahl; i++) {
+            try {// Set parameter
 
-            for (i = 1; i <= 100; i++) {
+                //Adresse Anlegen
+                CustomerAddress customerAddress = new CustomerAddress();
+                customerAddress.setId(i);
+                customerAddress.setOrt("Testort");
+                customerAddress.setPlz("68" + i);
+                customerAddress.setHausnummer("" + i);
+                customerAddress.setStrasse("Teststraße");
 
+                //Phones Anlegen
+                List<PhoneType> phoneTypeList = new ArrayList<>();
+                PhoneType phoneType = new PhoneType();
+                phoneType.setId(i);
+                phoneType.setNumber(new Long("06217445"));
+                phoneTypeList.add(phoneType);
+
+                //Kunden Anlegen
                 FlightCustomer myFlightCustomer = new FlightCustomer();
+                myFlightCustomer.setId(i);
+                myFlightCustomer.setName("Name" + i);
+                myFlightCustomer.setCustomerStatus(FC_STATUS);
+                myFlightCustomer.setGesamtmeilen(FC_GESMANTMELEN);
+                myFlightCustomer.setJahresmeilen(FC_JAHRESMEILEN);
 
-                try {// Set parameter
-
-                    myFlightCustomer.setId(i);
-                    myFlightCustomer.setName("Name" + i);
-                    myFlightCustomer.setPhones(ptList);
-                    myFlightCustomer.setFlights(flList);
-                    myFlightCustomer.setCustomerStatus(FC_STATUS);
-                   // myFlightCustomer.setCustomerAddress(FC_ADRESS);
-                    myFlightCustomer.setGesamtmeilen(FC_GESMANTMELEN);
-                    myFlightCustomer.setJahresmeilen(FC_JAHRESMEILEN);
+                //Beziehungen anlegen
+                myFlightCustomer.setCustomerAddress(customerAddress);
+                myFlightCustomer.setPhones(phoneTypeList);
 
 
-                    fcList.add(myFlightCustomer);
+                fcList.add(myFlightCustomer);
 
-
-                } catch (java.lang.Exception ex) {
-                    System.err.println("Unable to populate FLIGHTCUSTOMER table");
-                    System.out.println("FC_ID=" + i + " FC_NAME=" + FC_NAME +
-                            " FC_PHONE=" + FC_PHONE + " FC_FLIGHTS="
-                            + FC_FLIGHTS + //*" FC_STATUS=" + FC_STATUS +
-                            " FC_ADRESS=" + FC_ADRESS + " FC_GESAMTMEILEN= " + FC_GESMANTMELEN +
-                            " FC_JAHRESMEILEN=" + FC_JAHRESMEILEN);
-                    ex.printStackTrace();
-                    System.exit(1);
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            System.out.print("\n");
-            ////con.commit();
-        } catch (java.lang.Exception ex) {
-            System.err.println("Unable to populate FLIGHTCUSTOMER table");
-            ex.printStackTrace();
-            System.exit(1);
         }
 
         return fcList;
-
     }
-
-    //Populator for PhoneType
-
-    public static List<PhoneType> populatePhoneTypeAsList(int i) {
-
-        List<PhoneType> ptList = new ArrayList<PhoneType>();
-
-        Random rand = new Random();
-        Integer n = rand.nextInt(12) + 1;
-
-
-        for (i = 1; i <= 100; i++) {
-
-                PhoneType myPhoneType = new PhoneType();
-
-                // Set parameter
-
-                    myPhoneType.setId(i);
-                    myPhoneType.setNumber(n);
-
-                    ptList.add(myPhoneType);
-                }
-
-            return ptList;
-
-    }
-
-    //Populator for Flights
-
-    public static List<Flight> populateFlightsAsList(int i) {
-
-        List<Flight> flList = new ArrayList<Flight>();
-        List<Flugzeug> flugzeugList = new ArrayList<Flugzeug>();
-        Flugzeug flugzeug = new Flugzeug();
-
-
-        for (i = 1; i <= 100; i++) {
-
-            Flight myFlight = new Flight();
-
-            // Set parameter
-
-            myFlight.setId(i);
-            myFlight.setSegments(new ArrayList<>());
-            myFlight.setFlugzeug(flugzeug);
-            myFlight.setAnkuftszeit(new Date(2019, 01, 01));
-            myFlight.setAbflugzeit(new Date(2019, 01, 14));
-
-
-            flList.add(myFlight);
-        }
-
-        return flList;
-
-    }
-
-};
-
+}
