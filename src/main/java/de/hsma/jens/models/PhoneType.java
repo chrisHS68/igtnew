@@ -38,12 +38,12 @@ public class PhoneType implements Serializable {
         this.number = number;
     }
 
-    public List<FlightCustomer> getCustomer() {
+    public List<FlightCustomer> getCustomers() {
         return customers;
     }
 
-    public void setCustomer(List<FlightCustomer> customer) {
-        this.customers = customer;
+    public void setCustomers(List<FlightCustomer> customers) {
+        this.customers = customers;
     }
 
     @Override
@@ -54,10 +54,5 @@ public class PhoneType implements Serializable {
                 ", customers=" + customers +
                 '}';
     }
-
-    public void setNumber(Integer n)  {
-        this.number = number;
-    }
-
 
 }
