@@ -1,6 +1,7 @@
 package de.hsma.jens.models;
 
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.search.annotations.Indexed;
 
@@ -8,13 +9,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 @Entity
 @Indexed
 @Table(name = "AIRPORT")
 public class Airport implements Serializable {
-/*    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")*/
+    /*    @GeneratedValue(generator = "increment")
+        @GenericGenerator(name = "increment", strategy = "increment")*/
     @Id
     private Integer id;
     @Column
@@ -78,13 +80,6 @@ public class Airport implements Serializable {
 
     @Override
     public String toString() {
-        return "Airport{" +
-                "id=" + id +
-                ", kuerzel='" + kuerzel + '\'' +
-                ", name='" + name + '\'' +
-                ", Land='" + Land + '\'' +
-                ", zielflughafen=" + zielflughafen +
-                ", abflughafen=" + abflughafen +
-                '}';
+        return this.getClass().getSimpleName() + "-" + getId();
     }
 }

@@ -75,16 +75,8 @@ public class CustomerAddress implements Serializable {
         this.hausnummer = hausnummer;
     }
 
-
     @Override
     public String toString() {
-        return "CustomerAddress{" +
-                "id=" + id +
-                ", strasse='" + strasse + '\'' +
-                ", plz='" + plz + '\'' +
-                ", ort='" + ort + '\'' +
-                ", hausnummer='" + hausnummer + '\'' +
-                ", customer=" + customer +
-                '}';
+        return this.getClass().getSimpleName() + "-" + getId();
     }
 }

@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 
 @Entity
@@ -97,19 +98,8 @@ public class FlightCustomer implements Serializable {
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
     }
-
     @Override
     public String toString() {
-        return "FlightCustomer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", gesamtmeilen=" + gesamtmeilen +
-                ", jahresmeilen=" + jahresmeilen +
-                ", customerStatus=" + customerStatus +
-                ", customerAddress=" + customerAddress +
-                ", phones=" + phones +
-                ", flights=" + flights +
-                '}';
+        return this.getClass().getSimpleName() + "-" + getId();
     }
-
 }

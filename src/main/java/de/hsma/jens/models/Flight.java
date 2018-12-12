@@ -13,8 +13,8 @@ import java.util.List;
 @Indexed
 @Table(name = "FLIGHT")
 public class Flight implements Serializable {
-/*    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")*/
+    /*    @GeneratedValue(generator="increment")
+        @GenericGenerator(name="increment", strategy = "increment")*/
     @Id
     private Integer id;
     @Column
@@ -25,7 +25,7 @@ public class Flight implements Serializable {
     Flugzeug flugzeug;
     @ManyToMany(mappedBy = "flights")
     private List<FlightCustomer> customer = new ArrayList<>();
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Flightsegment> segments = new ArrayList<>();
 
     public Integer getId() {
@@ -78,13 +78,7 @@ public class Flight implements Serializable {
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", ankuftszeit=" + ankuftszeit +
-                ", abflugzeit=" + abflugzeit +
-                ", flugzeug=" + flugzeug +
-                ", customer=" + customer +
-                ", segments=" + segments +
-                '}';
+        return this.getClass().getSimpleName() + "-" + getId();
     }
+
 }

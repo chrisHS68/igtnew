@@ -77,13 +77,6 @@ public class Flightsegment {
 
     @Override
     public String toString() {
-        return "Flightsegment{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", strecke=" + strecke +
-                ", flights=" + flights +
-                ", zielflughafen=" + zielflughafen +
-                ", abflughafen=" + abflughafen +
-                '}';
+        return this.getClass().getSimpleName() + "-" + getId();
     }
 }

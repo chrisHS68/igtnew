@@ -85,18 +85,9 @@ public class Flugzeug implements Serializable {
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
     }
-
     @Override
     public String toString() {
-        return "Flugzeug{" +
-                "id=" + id +
-                ", typbezeichnung='" + typbezeichnung + '\'' +
-                ", sitzplaetze_ersteklasse=" + sitzplaetze_ersteklasse +
-                ", sitzplaetze_economy=" + sitzplaetze_economy +
-                ", preis_ersteklasse=" + preis_ersteklasse +
-                ", preis_economy=" + preis_economy +
-                ", flights=" + flights +
-                '}';
+        return this.getClass().getSimpleName() + "-" + getId();
     }
 }
 

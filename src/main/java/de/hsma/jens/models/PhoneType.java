@@ -45,14 +45,9 @@ public class PhoneType implements Serializable {
     public void setCustomers(List<FlightCustomer> customers) {
         this.customers = customers;
     }
-
     @Override
     public String toString() {
-        return "PhoneType{" +
-                "id=" + id +
-                ", number=" + number +
-                ", customers=" + customers +
-                '}';
+        return this.getClass().getSimpleName() + "-" + getId();
     }
 
 }
