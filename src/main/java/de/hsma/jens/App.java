@@ -21,7 +21,7 @@ public class App {
         FlightCustomerController fcController = new FlightCustomerController();
         int i = 1;
         //Dauerschleife für Buchungen
-       // while (true) {
+        while (true) {
 
             //Leeren Kunden anlegen
             FlightCustomer flightCustomer = new FlightCustomer();
@@ -176,7 +176,7 @@ public class App {
             i++;
         }
 
-   // }
+    }
 
     public static Date createDate(String eingabe){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
