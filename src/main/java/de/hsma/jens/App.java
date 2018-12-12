@@ -65,11 +65,13 @@ public class App {
             System.out.println("Gewähltes Datum: " + abflugdatum.toString());
 
             //Rückflugdatum wählen
+/*
             System.out.println("Rückflugdatum wählen (dd.MM.yyyy)");
             String rückflugdatumEingabe = scanner.nextLine();
             Date rückflugdatum = createDate(rückflugdatumEingabe);
 
             System.out.println("Gewähltes Datum: " + rückflugdatum.toString());
+*/
 
             //Flüge anzeigen
             List<Flight> möglicheFlüge = new ArrayList<>();
