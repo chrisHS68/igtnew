@@ -84,6 +84,7 @@ public class CustomerAddress implements Serializable {
                 ", plz='" + plz + '\'' +
                 ", ort='" + ort + '\'' +
                 ", hausnummer='" + hausnummer + '\'' +
+                ", customer=" + customer +
                 '}';
     }
 }

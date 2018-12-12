@@ -102,6 +102,7 @@ public class FlightCustomer implements Serializable {
     public String toString() {
         return "FlightCustomer{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", gesamtmeilen=" + gesamtmeilen +
                 ", jahresmeilen=" + jahresmeilen +
                 ", customerStatus=" + customerStatus +
