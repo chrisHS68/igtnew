@@ -19,10 +19,10 @@ public class App {
         FlightController flightController = new FlightController();
         flightController.createFlight(flightList);
         FlightCustomerController fcController = new FlightCustomerController();
+
         int i = 1;
         //Dauerschleife für Buchungen
         while (true) {
-
             //Leeren Kunden anlegen
             FlightCustomer flightCustomer = new FlightCustomer();
             flightCustomer.setId(i);
@@ -33,6 +33,7 @@ public class App {
             List<FlightCustomer> fcList = new ArrayList<FlightCustomer>();
             fcList.add(flightCustomer);
             fcController.createFlightCustomers(fcList);
+
 
             //Alle vefügbaren Fluhäfen abrufen
             AirportController flugzeugController = new AirportController();
@@ -75,6 +76,7 @@ public class App {
 
             //Flüge anzeigen
             List<Flight> möglicheFlüge = new ArrayList<>();
+            möglicheFlüge = flightController.getAllFlight();
             for (Flight f: flightList) {
                 if(f.getSegments().get(0).getAbflughafen().getId() == abflugEingabe &&
                         f.getSegments().get(0).getZielflughafen().getId() == zielEingabe){
@@ -102,17 +104,18 @@ public class App {
             System.out.println("Flugklasse wählen:");
             System.out.println("(1)Erste Klasse");
             System.out.println("(2)Economy");
-            int auswahlSitzklasse = Integer.parseInt(scanner.nextLine());
+            int auswahlSitzklasse = 0;
+            auswahlSitzklasse = Integer.parseInt(scanner.nextLine());
 
             //Kundendaten eingeben
             FlightCustomerController flightCustomerController = new FlightCustomerController();
             CustomerAdressController customerAdressController = new CustomerAdressController();
             PhoneTypeController phoneTypeController = new PhoneTypeController();
 
-            flightCustomer.setId(1);
+            //flightCustomer.setId(i);
 
             CustomerAddress customerAddress = new CustomerAddress();
-            customerAddress.setId(1);
+            customerAddress.setId(i);
             System.out.println("Name eingeben");
             flightCustomer.setName(scanner.nextLine());
             System.out.println("Straße eingeben: ");
@@ -123,9 +126,10 @@ public class App {
             customerAddress.setPlz(scanner.nextLine());
             System.out.println("Ort eigeben: ");
             customerAddress.setOrt(scanner.nextLine());
+            customerAddress.setCustomer(flightCustomer);
 
             PhoneType phone = new PhoneType();
-            phone.setId(1);
+            phone.setId(i);
             System.out.println("Telefonnummer eingeben:");
             int phonenumber = Integer.parseInt(scanner.nextLine());
             phone.setNumber(new Long(phonenumber));
@@ -133,10 +137,10 @@ public class App {
             List<PhoneType> phones = new ArrayList<>();
             phones.add(phone);
             phoneTypeController.createPhoneType(phones);
+            flightCustomer.setPhones(phones);
 
             List<CustomerAddress> customerAddresses = new ArrayList<>();
             customerAddresses.add(customerAddress);
-            customerAdressController.createAdress(customerAddresses);
 
             flightCustomer.setCustomerAddress(customerAddress);
 
@@ -158,7 +162,8 @@ public class App {
             System.out.println("Flug buchen? ");
             System.out.println("1: JA ");
             System.out.println("2: NEIN");
-            int buchungswahl = Integer.parseInt(scanner.nextLine());
+            int buchungswahl = 0;
+            buchungswahl = Integer.parseInt(scanner.nextLine());
             if (buchungswahl == 1) {
                 System.out.println("Flug gebucht");
                 flightCustomer.setFlights(möglicheFlüge);
