@@ -5,7 +5,7 @@ FROM alpine/git
 WORKDIR /app
 #To avoid caching !!!!
 ARG CACHEBUST=1
-RUN git clone https://github.com/chrisHS68/igtnew
+RUN git clone -b mariadb https://github.com/chrisHS68/igtnew.git
 
 FROM maven:3.6.0-jdk-8-alpine
 WORKDIR /app
