@@ -35,6 +35,8 @@
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value="jenskohler"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="javax.persistence.schema-generation.database.action"
+                      value="drop-and-create"/>
 
         </properties>
 
@@ -62,6 +64,7 @@
         <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
 
         <properties>
+
             <property name="hibernate.ogm.datastore.provider"
                       value="mongodb"/>
             <property name="hibernate.ogm.datastore.database" value="ogm_hibernate"/>
@@ -70,7 +73,6 @@
                       value="true"/>
             <property name="hibernate.ogm.datastore.host" value="localhost"/>
             <property name="hibernate.ogm.datastore.port" value="27017"/>
-
 
         </properties>
     </persistence-unit>
