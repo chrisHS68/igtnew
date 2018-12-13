@@ -12,11 +12,11 @@ import static de.hsma.jens.tools.FlightCustomerPopulator.populateCustomerAsList;
 public class PopulatorTest {
     @Test
     public void createCustomer() {
+/*
 
         //Customer Anlegen
         List<FlightCustomer> flightCustomers;
-        int anzahl = 2500;
-        //100 564ms 25000 6794ms
+        int anzahl = 25000;
         flightCustomers = populateCustomerAsList(anzahl);
 
 
@@ -41,7 +41,7 @@ public class PopulatorTest {
 
             //Customer Updaten
             for (FlightCustomer c: readList) {
-                c.setGesamtmeilen(100000);
+                c.setGesamtmeilen(1000);
             }
             startTime = System.currentTimeMillis();
             flightCustomerController.updateFlightCustomer(readList);
@@ -51,16 +51,19 @@ public class PopulatorTest {
             System.out.println("Updated all Customers in " + resultTime + "ms");
 
             //Customer Löschen
-            startTime = System.currentTimeMillis();
+ */
+/*           startTime = System.currentTimeMillis();
             flightCustomerController.deleteAllFlightCustomer();
             endTime = System.currentTimeMillis();
             resultTime = endTime - startTime;
 
-            System.out.println("Deleted all Customers in " + resultTime + "ms");
+            System.out.println("Deleted all Customers in " + resultTime + "ms");*//*
+
 
         }catch(Exception e){
             e.printStackTrace();
         }
+*/
 
 
     }
