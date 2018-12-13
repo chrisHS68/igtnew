@@ -75,7 +75,7 @@ public class App {
 */
 
             //Flüge anzeigen
-            List<Flight> möglicheFlüge = new ArrayList<>();
+            List<Flight> möglicheFlüge;
             möglicheFlüge = flightController.getAllFlight();
             for (Flight f: flightList) {
                 if(f.getSegments().get(0).getAbflughafen().getId() == abflugEingabe &&
@@ -162,8 +162,7 @@ public class App {
             System.out.println("Flug buchen? ");
             System.out.println("1: JA ");
             System.out.println("2: NEIN");
-            int buchungswahl = 0;
-            buchungswahl = Integer.parseInt(scanner.nextLine());
+            int buchungswahl = Integer.parseInt(scanner.nextLine());
             if (buchungswahl == 1) {
                 System.out.println("Flug gebucht");
                 flightCustomer.setFlights(möglicheFlüge);
