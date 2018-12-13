@@ -1,4 +1,4 @@
-import de.hsma.jens.controllers.FlightCustomerController;
+/**import de.hsma.jens.controllers.FlightCustomerController;
 import de.hsma.jens.controllers.PopulatorController;
 import de.hsma.jens.models.FlightCustomer;
 import de.hsma.jens.tools.FlightCustomerPopulator;
@@ -7,11 +7,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static de.hsma.jens.tools.FlightCustomerPopulator.populateCustomerAsList;
+import static de.hsma.jens.tools.FlightCustomerPopulator.populateCustomerAsList;**/
 
 public class PopulatorTest {
-
-   /* @Test
+/**
+    @Test
     public void createCustomer() {
 
         //Customer Anlegen
@@ -63,6 +63,5 @@ public class PopulatorTest {
             e.printStackTrace();
         }
 
-    }
-*/
+    }**/
 }
