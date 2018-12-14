@@ -12,6 +12,6 @@ WORKDIR /app
 RUN ls -a
 COPY --from=0 /app/igtnew /app
 RUN mvn clean
-RUN mvn
+RUN mvn install
 #Exexcuted after Docker run
 CMD mvn exec:java -Dexec.mainClass=de.hsma.jens.App
